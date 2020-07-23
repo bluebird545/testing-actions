@@ -1,0 +1,19 @@
+name: getting-started
+on:
+  push:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+
+jobs:
+  my_test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Hello ${{ github.events.inputs.name }}!"
+          echo "- in ${{ github.events.inputs.home }}!"
