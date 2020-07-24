@@ -1,0 +1,15 @@
+name: Push triggered workflow
+on: push
+
+jobs:
+  my_job2:
+    name: My Second Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing environment variables
+        env:
+          ENV: dev
+          WORKSPACE: mpp
+        run: |
+          echo "The environment is $ENV"
+          echo "The workspace is $WORKSPACE"
