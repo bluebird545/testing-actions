@@ -1,0 +1,12 @@
+name: Ansible workflow
+on: push
+
+jobs:
+  ansible_job:
+    name: Run ansible playbook
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/hello-world-docker-action@master
+      with: 
+        playbook: helloworld.yml
+        directory: ./ansible
