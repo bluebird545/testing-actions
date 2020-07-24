@@ -11,9 +11,22 @@ on:
         required: false
 
 jobs:
-  my_test:
+  my_job1:
+    name: My First Job
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Printing a greeting
+        run: |
           echo "Hello ${{ github.events.inputs.name }}!"
           echo "- in ${{ github.events.inputs.home }}!"
+  my_job2:
+    name: My Second Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing environment variables
+        env:
+          ENV: dev
+          WORKSPACE: mpp
+        run: |
+          echo "The environment is $ENV"
+          echo "The workspace is $WORKSPACE"
