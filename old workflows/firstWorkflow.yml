@@ -1,0 +1,15 @@
+name: Manually triggered workflow
+on: push
+
+jobs:
+  my_job1:
+    name: My First Job
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/hello-world-docker-action@master
+      with: 
+        who-to-greet: 'Skittles the Cat'
+      # - name: Printing a greeting
+      #   run: |
+      #     echo "Hello ${{ github.event.inputs.name }}!"
+      #     echo "- in ${{ github.event.inputs.home }}!"
