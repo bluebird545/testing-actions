@@ -1,5 +1,14 @@
 name: Push triggered workflow
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      env:
+        description: Environment
+        required: true
+      workspace:
+        description: Workspace
+        required: true
+
 
 jobs:
   my_job2:
@@ -7,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Printing environment variables
-        env:
-          ENV: dev
-          WORKSPACE: mpp
+        # env:
+        #   ENV: dev
+        #   WORKSPACE: mpp
         run: |
-          echo "The environment is $ENV"
-          echo "The workspace is $WORKSPACE"
+          echo "The environment is ${{ github.event.inputs.env }}"
+          echo "The workspace is ${{ github.event.inputs.workspace }}"

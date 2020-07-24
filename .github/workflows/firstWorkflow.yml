@@ -1,21 +1,15 @@
 name: Manually triggered workflow
-on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
+on: push
 
 jobs:
   my_job1:
     name: My First Job
     runs-on: ubuntu-latest
     steps:
-      - name: Printing a greeting
-        run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+    - uses: actions/hello-world-docker-action@master
+      with: 
+        who-to-greet: 'Skittles the Cat'
+      # - name: Printing a greeting
+      #   run: |
+      #     echo "Hello ${{ github.event.inputs.name }}!"
+      #     echo "- in ${{ github.event.inputs.home }}!"
