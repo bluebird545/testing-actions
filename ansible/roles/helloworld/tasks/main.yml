@@ -1,3 +1,12 @@
 ---
 - name: Say hi
   shell: echo 'Hello world!'
+  register: print1
+
+- debug: msg={{ print1 }}
+
+- name: Print the environment
+  shell: echo "We are in the {{ env }} environment"
+  register: print2
+
+- debug: msg={{ print2 }}

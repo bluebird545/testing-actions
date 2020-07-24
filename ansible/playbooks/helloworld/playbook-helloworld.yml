@@ -1,4 +1,4 @@
 ---
-- hosts: all
+- hosts: localhost
   roles:
-    - role: ../roles/helloworld
+    - role: ../../roles/helloworld

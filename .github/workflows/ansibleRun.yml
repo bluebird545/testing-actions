@@ -1,12 +1,23 @@
 name: Ansible workflow
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      env:
+        description: Environment
+        required: true
 
 jobs:
   ansible_job:
     name: Run ansible playbook
     runs-on: ubuntu-latest
     steps:
-    - uses: dawidd6/action-ansible-playbook@v2
+    - uses: actions/checkout@v2
+      with: 
+        repository: bluebird545/testing-actions
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2
       with: 
         playbook: playbook-helloworld.yml
-        directory: ./ansible/playbooks/helloworld
+        directory: ansible/playbooks/helloworld
+        options: |
+          --extra-vars env=${{ github.event.inputs.env }}
